@@ -1,0 +1,24 @@
+<div class="col-xs-12 col-md-9 failed-records">
+    <div *ngIf="failedRecords.length>0">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Transaction Reference
+                    </td>
+                    <td>
+                        Description
+                    </td>
+                </tr>
+            </thead>
+            <tr *ngFor="let record of failedRecords">
+                <td>
+                    {{record.reference}}
+                </td>
+                <td>
+                    {{record.description}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

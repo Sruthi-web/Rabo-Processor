@@ -9,37 +9,14 @@ import { Component } from '@angular/core';
 
 export class RecordValidatorComponent {
 failedRecords:any = [];
-    convertCsvToJson() {
-        const inputFile = <HTMLInputElement>document.getElementById('fileInput');
-        const reader = new FileReader();
-        reader.onload = () => {
-            let customerRecords = this.csvToJson(reader.result);
-            debugger;
-            const {recordsWithValidEndBalance, recordsWithInvalidEndBalance} = this.validateEndBalance(customerRecords);
-            this.failedRecords = this.validateRecords(recordsWithValidEndBalance).concat(recordsWithInvalidEndBalance);
 
-        };
-        reader.readAsText(inputFile.files[0]);
-
+    onValidate(customerRecords:any) {
+        const {recordsWithValidEndBalance, recordsWithInvalidEndBalance} = this.validateEndBalance(customerRecords);
+        this.failedRecords = this.validateRecords(recordsWithValidEndBalance).concat(recordsWithInvalidEndBalance);
     }
 
-    csvToJson(csv: any) {
-        let rows = csv.split("\n");
-        let records = [];
-        let recordHeaders = rows[0].split(",");
-        recordHeaders = recordHeaders.map((recordHeader: string) => {
-            return recordHeader.replace(/\s+/g, "").toLowerCase();
-        })
-
-        for (var i = 1; i < rows.length; i++) {
-            var obj = {};
-            var currentRecord = rows[i].split(",");
-            for (var j = 0; j < recordHeaders.length; j++) {
-                obj[recordHeaders[j]] = currentRecord[j];
-            }
-            records.push(obj);
-        }
-        return records;
+    onClearRecords() {
+        this.failedRecords = [];
     }
 
     validateRecords(records: any) {
