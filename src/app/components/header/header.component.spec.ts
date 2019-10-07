@@ -2,7 +2,7 @@ import { TestBed, async, ComponentFixture } from "@angular/core/testing";
 import { HeaderComponent } from "./header.component";
 import { CommonModule } from '@angular/common';
 
-describe("Component: HomeComponent", () => {
+describe("Component: HeaderComponent", () => {
     let fixture: ComponentFixture<HeaderComponent>;
     let component: HeaderComponent;
 

@@ -3,7 +3,7 @@
         <div class="input-text col-xs-6">
             Upload the file for validation
         </div>
-        <input #inputFile class="col-xs-6" type='file' id="uploadCaptureInputFile" (change)='convertCsvToJson($event)' id='fileInput'>
+        <input accept=".csv,.xml" #inputFile class="col-xs-6" type='file' id="uploadCaptureInputFile" (change)='convertCsvToJson($event)' id='fileInput'>
     </div>
     <div class="col-xs-12 input-button">
         <button (click)="onValidate()">Validate</button>

@@ -8,11 +8,13 @@ import { Component } from '@angular/core';
 })
 
 export class RecordValidatorComponent {
-failedRecords:any = [];
+    failedRecords: any = [];
 
-    onValidate(customerRecords:any) {
-        const {recordsWithValidEndBalance, recordsWithInvalidEndBalance} = this.validateEndBalance(customerRecords);
-        this.failedRecords = this.validateRecords(recordsWithValidEndBalance).concat(recordsWithInvalidEndBalance);
+    onValidate(customerRecords: any) {
+        if (customerRecords) {
+            const {recordsWithValidEndBalance, recordsWithInvalidEndBalance} = this.validateEndBalance(customerRecords);
+            this.failedRecords = this.validateRecords(recordsWithValidEndBalance).concat(recordsWithInvalidEndBalance);
+        }
     }
 
     onClearRecords() {
@@ -20,11 +22,11 @@ failedRecords:any = [];
     }
 
     validateRecords(records: any) {
-        const lookup = records.reduce((a: any, e: any) => {
-            a[e.reference] = e.reference in a ? ++a[e.reference] : 0;
-            return a;
+        const lookup = records.reduce((customerRecords: any, record: any) => {
+            customerRecords[record.reference] = record.reference in customerRecords ? ++customerRecords[record.reference] : 0;
+            return customerRecords;
         }, {});
-        return (records.filter((e: any) => lookup[e.reference]));
+        return (records.filter((record: any) => lookup[record.reference]));
     }
 
     validateEndBalance(records: any) {
