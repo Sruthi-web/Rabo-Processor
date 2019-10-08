@@ -13,7 +13,9 @@ This Application Divided in to four components
 Run the Application
 
 Install Node Modules - npm install
+
 To run application - npm start
+
 Unit tests executed using karma and Jasmine - npm run test
 
 
