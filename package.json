@@ -1,8 +1,8 @@
 {
-  "name": "angular-unit-tests",
+  "name": "rabo-processor",
   "version": "0.0.1",
-  "author": "Nuru Salsiu Abdullahi",
-  "description": "Angular Unit tests with jasmine, karma and webpack",
+  "author": "Sruthi Nivetha",
+  "description": "Rabobank Customer Statement Processor",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack-dev-server --config webpack.config.dev.js  --inline --hot --host 0.0.0.0",
@@ -59,14 +59,15 @@
     "sass-loader": "^7.0.3",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.21.0",
-    "to-string-loader": "^1.1.5",
     "ts-loader": "^4.4.2",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "tslint-angular": "^1.1.2",
+    "to-string-loader": "^1.1.5",
     "typescript": "^2.9.2",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "xml-js": "^1.6.11"
   }
 }

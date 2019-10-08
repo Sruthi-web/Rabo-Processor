@@ -1,2 +1,2 @@
 <record-input (onValidateRecords)="onValidate($event)" (onClearRecords)="onClearRecords($event)"></record-input>
-<record-list [failedRecords]="failedRecords"></record-list>
+<record-list *ngIf="showFailedRecords" [failedRecords]="failedRecords"></record-list>

@@ -32,7 +32,7 @@ describe("Component: RecordValidatorComponent", () => {
     }
     ];
 
-    let nullCustomerRecords =[];
+    let nullCustomerRecords = [];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -47,7 +47,7 @@ describe("Component: RecordValidatorComponent", () => {
     it("should be defined ", async(() => {
         expect(component).toBeTruthy();
     }));
-    
+
     it("should clear records ", async(() => {
         component.onClearRecords();
         expect(component.failedRecords.length).toBe(0);
@@ -115,5 +115,23 @@ describe("Component: RecordValidatorComponent", () => {
     it("should return zero failedRecords when no customerRecords found", async(() => {
         component.onValidate(nullCustomerRecords);
         expect(component.failedRecords.length).toBe(0);
+    }));
+
+    it("should check whether is mutation is not null", async(() => {
+        let record = [{
+            accountnumber: "NL69ABNA0433647324",
+            description: "Subscription for Jan Theu�",
+            endbalance: "93.77",
+            mutation: undefined,
+            reference: "112806",
+            startbalance: "45.59"
+        }];
+
+        let result = component.validateEndBalance(record);
+        let endResult = {
+            recordsWithValidEndBalance: [],
+            recordsWithInvalidEndBalance: []
+        }
+        expect(result).toEqual(endResult);
     }))
 });

@@ -9,16 +9,19 @@ import { Component } from '@angular/core';
 
 export class RecordValidatorComponent {
     failedRecords: any = [];
+    showFailedRecords: boolean = false;
 
     onValidate(customerRecords: any) {
         if (customerRecords) {
             const {recordsWithValidEndBalance, recordsWithInvalidEndBalance} = this.validateEndBalance(customerRecords);
             this.failedRecords = this.validateRecords(recordsWithValidEndBalance).concat(recordsWithInvalidEndBalance);
+            this.showFailedRecords = true;
         }
     }
 
     onClearRecords() {
         this.failedRecords = [];
+        this.showFailedRecords = false;
     }
 
     validateRecords(records: any) {
@@ -34,7 +37,7 @@ export class RecordValidatorComponent {
         let recordsWithInvalidEndBalance = [];
         records.forEach(record => {
             if (record.mutation !== undefined) {
-                if (+record.mutation > 0 && record.mutation !== undefined) {
+                if (+record.mutation > 0) {
                     (+(+record.startbalance + +record.mutation).toFixed(2)) === +record.endbalance ? recordsWithValidEndBalance.push(record) : recordsWithInvalidEndBalance.push(record);
                 } else {
                     (+(record.startbalance - Math.abs(+record.mutation)).toFixed(2)) === +record.endbalance ? recordsWithValidEndBalance.push(record) : recordsWithInvalidEndBalance.push(record);
