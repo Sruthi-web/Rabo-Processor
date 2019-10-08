@@ -17,7 +17,7 @@ Run the Application
 
 Install Node Modules - npm install
 
-To run application - npm start
+To run application - npm start  and application runs at http://localhost:3000/
 
 Unit tests executed using karma and Jasmine - npm run test
 
